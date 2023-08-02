@@ -2,11 +2,12 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import { SingleCard } from "./Card";
-import { SimpleGrid } from "@chakra-ui/react";
+import { Flex, SimpleGrid } from "@chakra-ui/react";
 const url = "https://api.dexscreener.com/latest/dex/tokens";
 const token = "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2";
-export const ProductList = () => {
+export const ProductList = ({ getQuery }) => {
   const [data, setData] = useState([]);
+  console.log(getQuery);
   function getData() {
     axios
       .get(`${url}/${token}`)
@@ -23,21 +24,11 @@ export const ProductList = () => {
   }, []);
   return (
     <>
-      <SimpleGrid
-        gridTemplateColumns={{
-          base: "repeat(1,1fr)",
-          sm: "repeat(1,1fr)",
-          md: "repeat(3,1fr)",
-          lg: "repeat(4,1fr)",
-          xl: "repeat(4,1fr)",
-        }}
-        rowGap={"30px"}
-        columnGap={"15px"}
-      >
+      <Flex gap={"15px"} flexDirection={"column"}>
         {data?.map((el, i) => (
-          <SingleCard key={i} />
+          <SingleCard key={i} data={el} />
         ))}
-      </SimpleGrid>
+      </Flex>
     </>
   );
 };
