@@ -10,8 +10,7 @@ import {
 export const SingleCard = () => {
   return (
     <>
-      card
-      <Card>
+      <Card bg={"#390554"}>
         <CardBody>
           <Stack mt="6" spacing="3">
             <Text>

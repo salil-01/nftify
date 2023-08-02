@@ -149,7 +149,7 @@ const Sidebar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Box minH="100vh">
+    <Box minH="100vh" bgImage={"./bgImage.png"}>
       <SidebarContent
         onClose={() => onClose}
         display={{ base: "none", md: "block" }}
