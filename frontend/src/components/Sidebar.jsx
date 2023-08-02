@@ -2,12 +2,9 @@
 
 import {
   IconButton,
-  Avatar,
   Box,
   CloseButton,
   Flex,
-  HStack,
-  VStack,
   Icon,
   useColorModeValue,
   Text,
@@ -20,6 +17,8 @@ import {
   InputRightElement,
 } from "@chakra-ui/react";
 import { FiHome, FiTrendingUp, FiMenu, FiSearch } from "react-icons/fi";
+import { Footer } from "./Footer";
+import { ProductList } from "./ProductList";
 
 const LinkItems = [
   { name: "Token Address", icon: FiHome },
@@ -29,23 +28,29 @@ const LinkItems = [
 const SidebarContent = ({ onClose, ...rest }) => {
   return (
     <Box
-      transition="1s ease"
-      bg={useColorModeValue("white", "gray.900")}
+      transition="2s ease"
+      bg={"#292929"}
+      borderRadius={"0px 32px 0px 0px"}
       borderRight="1px"
       borderRightColor={useColorModeValue("gray.200", "gray.700")}
       w={{ base: "full", md: 60 }}
       pos="fixed"
-      h="full"
+      h={{ base: "100%", md: "100%", lg: "92%" }}
       {...rest}
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-        <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Logo
+        <Text
+          fontSize="2xl"
+          fontFamily="Pacifico"
+          fontWeight="bold"
+          color={"rgba(255, 255, 255, 0.7)"}
+        >
+          NFTify
         </Text>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon}>
+        <NavItem key={link.name} icon={link.icon} color={"#F7F9F9"}>
           {link.name}
         </NavItem>
       ))}
@@ -55,12 +60,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
 
 const NavItem = ({ icon, children, ...rest }) => {
   return (
-    <Box
-      as="a"
-      href="#"
-      style={{ textDecoration: "none" }}
-      _focus={{ boxShadow: "none" }}
-    >
+    <Box style={{ textDecoration: "none" }} _focus={{ boxShadow: "none" }}>
       <Flex
         align="center"
         p="4"
@@ -97,8 +97,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
         ml={{ base: 0, md: 60 }}
         px={{ base: 4, md: 4 }}
         height="20"
-        border={"1px solid"}
-        bg={useColorModeValue("white", "gray.900")}
+        // bg={useColorModeValue("white", "gray.900")}
         borderBottomWidth="1px"
         borderBottomColor={useColorModeValue("gray.200", "gray.700")}
         alignItems={"center"}
@@ -124,7 +123,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
         </Flex>
         <Box display={{ base: "none", md: "block" }}>
           <InputGroup>
-            <Input borderRadius={"20px"} minW={"430px"} border={"1px solid"} />
+            <Input borderRadius={"20px"} minW={"430px"} />
             <InputRightElement>
               <FiSearch />
             </InputRightElement>
@@ -136,7 +135,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
       </Flex>
       <Box display={{ base: "block", md: "none" }} w={"80%"} m={"20px auto"}>
         <InputGroup>
-          <Input borderRadius={"20px"} border={"1px solid"} />
+          <Input borderRadius={"20px"} />
           <InputRightElement>
             <FiSearch />
           </InputRightElement>
@@ -146,11 +145,11 @@ const MobileNav = ({ onOpen, ...rest }) => {
   );
 };
 
-const SidebarWithHeader = () => {
+const Sidebar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.900")}>
+    <Box minH="100vh">
       <SidebarContent
         onClose={() => onClose}
         display={{ base: "none", md: "block" }}
@@ -161,7 +160,7 @@ const SidebarWithHeader = () => {
         onClose={onClose}
         returnFocusOnClose={false}
         onOverlayClick={onClose}
-        size="full"
+        size="xs"
       >
         <DrawerContent>
           <SidebarContent onClose={onClose} />
@@ -169,11 +168,33 @@ const SidebarWithHeader = () => {
       </Drawer>
       {/* mobilenav */}
       <MobileNav onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }} p="4">
+      <Box
+        //
+        overflowY={"scroll"}
+        height={"80vh"}
+        ml={{ base: 0, md: 60 }}
+        p="4"
+        css={{
+          "::-webkit-scrollbar": {
+            // Height and border radius of the vertical scrollbar
+            height: "1px",
+            width: "12px",
+            borderRadius: "10px",
+          },
+          "::-webkit-scrollbar-thumb": {
+            background: "#F30050",
+            borderRadius: "10px", // Color of the vertical scrollbar thumb
+          },
+        }}
+      >
         {/* Content */}
+        <ProductList />
+      </Box>
+      <Box position={"relative"}>
+        <Footer />
       </Box>
     </Box>
   );
 };
 
-export default SidebarWithHeader;
+export default Sidebar;
