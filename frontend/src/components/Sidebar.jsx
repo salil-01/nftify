@@ -78,8 +78,46 @@ const SidebarContent = ({ onClose, ...rest }) => {
         {/* <Spacer /> */}
 
         <Spacer />
-        <Box width={"100%"} height={"69px"}>
-          <Footer />
+
+        <Box width={"100%"}>
+          <Flex mx={8} mb={"56px"}>
+            <IconButton
+              variant="solid"
+              bg={"#292929"}
+              fontSize="20px"
+              _hover={{
+                bg: "#292929",
+              }}
+              boxSize={"32px"}
+            >
+              <Img src="/facebook.png" />
+            </IconButton>
+            <IconButton
+              variant="solid"
+              fontSize="20px"
+              bg={"#292929"}
+              _hover={{
+                bg: "#292929",
+              }}
+              boxSize={"32px"}
+            >
+              <Img src="/linkedin.png" />
+            </IconButton>
+            <IconButton
+              variant="solid"
+              fontSize="20px"
+              bg={"#292929"}
+              _hover={{
+                bg: "#292929",
+              }}
+              boxSize={"32px"}
+            >
+              <Img src="/twitter.png" />
+            </IconButton>
+          </Flex>
+          <Box width={"100%"} height={"69px"}>
+            <Footer />
+          </Box>
         </Box>
       </VStack>
     </Box>
@@ -114,7 +152,7 @@ const MobileNav = ({ onOpen, sendQuery, ...rest }) => {
   useThrottle(() => {
     setQuery(text);
     sendQuery(query);
-  }, 1000);
+  }, 300);
   return (
     <>
       <Flex
@@ -132,11 +170,16 @@ const MobileNav = ({ onOpen, sendQuery, ...rest }) => {
         >
           <IconButton
             onClick={onOpen}
-            variant="outline"
+            variant="ghost"
+            color={"#FFFFFF"}
+            fontSize={"20px"}
             aria-label="open menu"
+            _hover={{
+              bg: "black",
+            }}
             icon={<FiMenu />}
           />
-          <Text fontSize="2xl" fontFamily="Pacifico" fontWeight="bold">
+          <Text color={"#FFFFFF"} fontSize={"32px"} fontFamily="Pacifico">
             NFTify
           </Text>
         </Flex>
