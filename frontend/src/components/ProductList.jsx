@@ -4,7 +4,8 @@ import axios from "axios";
 import { SingleCard } from "./Card";
 import { Box, Flex, SimpleGrid, Spinner } from "@chakra-ui/react";
 const url = "https://api.dexscreener.com/latest/dex/tokens";
-const token = "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2";
+const token =
+  "0x2170Ed0880ac9A755fd29B2688956BD959F933F8,0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095";
 export const ProductList = ({ getQuery }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);

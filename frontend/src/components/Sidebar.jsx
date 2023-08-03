@@ -184,7 +184,13 @@ const MobileNav = ({ onOpen, sendQuery, ...rest }) => {
             }}
             icon={<FiMenu />}
           />
-          <Text color={"#FFFFFF"} fontSize={"32px"} fontFamily="Pacifico">
+          <Text
+            color={"#FFFFFF"}
+            // border={"1px solid"}
+            zIndex={1}
+            fontSize={"32px"}
+            fontFamily="Pacifico"
+          >
             NFTify
           </Text>
         </Flex>
@@ -257,7 +263,7 @@ const Sidebar = () => {
           left="0"
           width="100%"
           height="100%"
-          backgroundColor="rgba(0, 0, 0, 0.5)"
+          backgroundColor="rgba(0, 0, 0, 0.7)"
         ></Box>
         <SidebarContent
           onClose={() => onClose}

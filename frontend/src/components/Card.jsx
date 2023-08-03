@@ -50,7 +50,7 @@ export const SingleCard = ({ data }) => {
               <Text>Symbol</Text>
               <Text wordBreak={"break-word"}>{baseToken.symbol}</Text>
               <Text>Dex ID</Text>
-              <Text wordBreak={"break-word"}>{dexId}</Text>
+              <Text wordBreak={"break-word"}>{dexId.substring(1, 4)}</Text>
               <Text>Pair Address</Text>
               <Text wordBreak={"break-word"}>
                 #{baseToken?.address.substring(8, 12)}
