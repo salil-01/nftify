@@ -55,7 +55,7 @@ export const ProductList = ({ getQuery }) => {
           justifyContent="center"
           height="80vh"
         >
-          <Spinner size="xl" color="rgba(255, 255, 255, 0.70)" />
+          <Spinner size="xl" color="#FFFFFF" />
         </Box>
       ) : (
         <Flex gap={"15px"} flexDirection={"column"}>

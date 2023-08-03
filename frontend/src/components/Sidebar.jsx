@@ -70,7 +70,13 @@ const SidebarContent = ({ onClose, ...rest }) => {
       <VStack width={"100%"} justifyContent={"space-between"} height={"93vh"}>
         <Box width={"100%"}>
           {LinkItems.map((link) => (
-            <NavItem key={link.name} icon={link.icon} color={"#F7F9F9"}>
+            <NavItem
+              key={link.name}
+              icon={link.icon}
+              color={"#F7F9F9"}
+              // px={"4"}
+              bg={link.name == "Token Address" ? "#F30050" : "#292929"}
+            >
               {link.name}
             </NavItem>
           ))}
@@ -130,8 +136,7 @@ const NavItem = ({ icon, children, ...rest }) => {
       <Flex
         align="center"
         p="4"
-        mx="4"
-        // borderRadius="lg"
+        paddingLeft={"8"}
         role="group"
         cursor="pointer"
         gap={"20px"}
