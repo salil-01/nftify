@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import { SingleCard } from "./Card";
-import { Box, Flex, SimpleGrid, Spinner } from "@chakra-ui/react";
+import { Box, Flex, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 const url = "https://api.dexscreener.com/latest/dex/tokens";
 const token =
   "0x2170Ed0880ac9A755fd29B2688956BD959F933F8,0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095";
@@ -59,11 +59,18 @@ export const ProductList = ({ getQuery }) => {
           <Spinner size="xl" color="#FFFFFF" />
         </Box>
       ) : (
-        <Flex gap={"15px"} flexDirection={"column"}>
-          {data?.map((el, i) => (
-            <SingleCard key={i} data={el} />
-          ))}
-        </Flex>
+        <>
+          <Box zIndex={10} ml={"20px"} position={"absolute"}>
+            <Text fontFamily={"Work Sans"} fontSize={"22px"} color={"#FFFFFF"}>
+              Token Search Results
+            </Text>
+          </Box>
+          <Flex gap={"15px"} flexDirection={"column"} mt={"44px"}>
+            {data?.map((el, i) => (
+              <SingleCard key={i} data={el} />
+            ))}
+          </Flex>
+        </>
       )}
     </>
   );

@@ -22,12 +22,12 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { useEffect } from "react";
+
 import { useState } from "react";
-import { FiHome, FiTrendingUp, FiMenu, FiSearch } from "react-icons/fi";
+import { FiMenu, FiSearch } from "react-icons/fi";
 import { useThrottle } from "../customHooks/useThrottle";
 import { Footer } from "./Footer";
 import { ProductList } from "./ProductList";
-
 const LinkItems = [
   { name: "Token Address", icon: "/token.svg" },
   { name: "Pair Address", icon: "/fluentpair.svg" },
@@ -154,6 +154,9 @@ const NavItem = ({ icon, children, ...rest }) => {
 const MobileNav = ({ onOpen, sendQuery, ...rest }) => {
   const [text, setText] = useState("");
   const [query, setQuery] = useState("");
+  const handleClick = () => {
+    console.log("click");
+  };
   useThrottle(() => {
     setQuery(text);
     sendQuery(query);
@@ -162,7 +165,7 @@ const MobileNav = ({ onOpen, sendQuery, ...rest }) => {
     <>
       <Flex
         ml={{ base: 0, md: 60 }}
-        px={{ base: 4, md: 4 }}
+        px={{ base: 4, md: 16 }}
         height="20"
         alignItems={"center"}
         justifyContent={"space-between"}
@@ -224,6 +227,7 @@ const MobileNav = ({ onOpen, sendQuery, ...rest }) => {
             height={"50px"}
             borderRadius={"20px"}
             fontWeight={"400"}
+            onClick={handleClick}
           >
             Connect
           </Button>
